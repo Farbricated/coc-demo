@@ -1,0 +1,9 @@
+
+dash
+pymongo
+web3
+pillow
+piexif
+opencv-python
+pyzbar
+stegano
