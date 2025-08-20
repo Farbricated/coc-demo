@@ -21,23 +21,20 @@ The system ensures evidence integrity through a clear, three-step process:
 3.  **VERIFY:** At any point in the future, an investigator, lawyer, or court official can upload their copy of the evidence to the **Verify Integrity** page.
     *   The system calculates a new hash of their file and compares it against the original records from both the database and the blockchain.
     *   It provides an instant, clear "✅ Verified" or "❌ Not Verified" status, proving whether the evidence is still in its original, pristine state.
-=======
-# 🛡️ Advanced Blockchain Evidence Management System
-
-This project is an innovative, full-stack platform designed to provide a reliable, transparent, and tamper-proof chain of custody for digital evidence. Leveraging cutting-edge blockchain technology alongside advanced forensic analysis tools, this system ensures the integrity and traceability of evidentiary images, making it an ideal prototype for law enforcement and legal applications.
->>>>>>> c675d069f85507a7272001d76a1bff13e4324ff0
+    
 
 ***
 
 ## ✨ Key Features
 
-<<<<<<< HEAD
 *   **🔍 Advanced Forensic Analysis:** Automatically extracts all EXIF metadata and runs a risk assessment engine to detect signs of tampering.
 *   **🔗 Immutable Blockchain Ledger:** Uses a custom Solidity smart contract on an Ethereum-compatible blockchain to create a permanent, unchangeable record of evidence.
 *   **🗂️ Centralized Database with Case Management:** All evidence is cataloged with a Case ID and stored securely in MongoDB Atlas.
 *   **✅ End-to-End Verification:** A simple, powerful workflow for anyone to independently verify the integrity of evidence against trusted records.
 *   **🖥️ Responsive & Professional UI:** A clean, multi-page web application built with Python and Dash, featuring a dynamic dashboard with real-time statistics.
-=======
+
+***
+
 *   **🔍 Advanced Forensic Analysis:**
     *   Automatic extraction and display of all available EXIF metadata, including GPS coordinates, timestamps, and camera/device information.
     *   Detection and decoding of steganographic content hidden via Least Significant Bit (LSB) techniques.
@@ -60,7 +57,6 @@ This project is an innovative, full-stack platform designed to provide a reliabl
     *   Features a professional sidebar for easy navigation between the Dashboard, Upload, Verify, and Database pages.
     *   A fully responsive design that provides an optimal user experience on desktops, tablets, and mobile devices.
     *   A dynamic dashboard with real-time system status indicators for MongoDB and blockchain connectivity.
->>>>>>> c675d069f85507a7272001d76a1bff13e4324ff0
 
 ***
 
@@ -69,17 +65,13 @@ This project is an innovative, full-stack platform designed to provide a reliabl
 *   **Frontend & Backend:** Python, Dash, Flask, Dash Bootstrap Components
 *   **Database:** MongoDB (via MongoDB Atlas)
 *   **Blockchain:** Solidity, Ganache, Web3.py
-<<<<<<< HEAD
 *   **Forensic & Utility Libraries:** Pillow, piexif, python-dotenv
-=======
 *   **Forensic & Utility Libraries:** Pillow, piexif, pyzbar, stegano, python-dotenv
->>>>>>> c675d069f85507a7272001d76a1bff13e4324ff0
-
+  
 ***
 
 ## 🚀 Getting Started
 
-<<<<<<< HEAD
 Follow these instructions to get a local copy of the project up and running.
 
 ### Prerequisites
