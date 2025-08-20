@@ -1,5 +1,3 @@
-***
-
 # 🛡️ Advanced Blockchain Evidence Management System
 
 This project is an innovative, full-stack platform designed to provide a reliable, transparent, and tamper-proof chain of custody for digital evidence. It's built to demonstrate how modern technology can solve a critical problem in forensics: proving that digital evidence has not been altered.
