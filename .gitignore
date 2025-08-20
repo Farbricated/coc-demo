@@ -1,13 +1,19 @@
 # .gitignore
 
-# Environment variables
-.env
+# Environment variables - CRITICAL
+# This will ignore the .env file inside the assets folder
+assets/.env
 
-# Python cache
+# Python cache and compiled files
 __pycache__/
 *.pyc
 
-# IDE and OS files
+# Virtual environments (if you use one)
+venv/
+.venv/
+env/
+
+# IDE and OS-specific files
 .idea/
 .vscode/
-*.DS_Store
+.DS_Store

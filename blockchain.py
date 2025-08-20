@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import os
 
 dotenv_path = os.path.join(os.path.dirname(__file__), 'assets', '.env')
-
 load_dotenv(dotenv_path=dotenv_path)
 
 GANACHE_URL = os.getenv("GANACHE_URL")
@@ -19,30 +18,24 @@ CONTRACT_ABI = """
 ]
 """
 
-w3 = None
-is_connected = False
+w3, is_connected, contract = None, False, None
 if GANACHE_URL:
     try:
         w3 = Web3(Web3.HTTPProvider(GANACHE_URL))
         is_connected = w3.is_connected()
-    except Exception:
-        is_connected = False
+    except Exception: is_connected = False
 print(f"Blockchain connection status: {is_connected}")
 
-contract = None
 if is_connected and CONTRACT_ADDRESS and 'YOUR_DEPLOYED' not in CONTRACT_ADDRESS:
     try:
         contract = w3.eth.contract(address=Web3.to_checksum_address(CONTRACT_ADDRESS), abi=CONTRACT_ABI)
         print("Smart contract loaded successfully.")
-    except Exception as e:
-        print(f"Could not load smart contract: {e}")
+    except Exception as e: print(f"Could not load smart contract: {e}")
 else:
-    print("Contract address not set in .env or blockchain not connected.")
-
+    print("Contract address not set or blockchain not connected.")
 
 def record_hash_on_blockchain(image_hash):
-    """Records a hash on the blockchain."""
-    if not contract: return None
+    if not contract or not WALLET_PRIVATE_KEY: return None
     try:
         account = w3.eth.account.from_key(WALLET_PRIVATE_KEY)
         tx = contract.functions.registerEvidence(bytes.fromhex(image_hash)).build_transaction({
@@ -57,7 +50,5 @@ def record_hash_on_blockchain(image_hash):
         return None
 
 def get_evidence_timestamp(image_hash):
-    """Gets the timestamp of a hash from the blockchain."""
     if not contract: return 0
     return contract.functions.getEvidenceTimestamp(bytes.fromhex(image_hash)).call()
-

@@ -1,9 +1,18 @@
-
 dash
+dash-bootstrap-components
+dash-table
+
+# Database connector for MongoDB
 pymongo
+
+# Blockchain interaction library for Ethereum
 web3
-pillow
+
+# For loading environment variables from .env file
+python-dotenv
+
+# Image processing and forensic analysis tools
+Pillow
 piexif
-opencv-python
 pyzbar
 stegano
