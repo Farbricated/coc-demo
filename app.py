@@ -28,7 +28,7 @@ SIDEBAR_STYLE = {
     "width": "16rem", "padding": "2rem 1rem", "backgroundColor": "#222",
 }
 
-# --- HELPER FUNCTIONS (Optimized Risk Assessment) ---
+# --- HELPER FUNCTIONS ---
 def extract_full_metadata(image_bytes):
     try:
         image = Image.open(io.BytesIO(image_bytes))
@@ -75,6 +75,31 @@ def get_map_iframe(gps_info):
         map_src = f"https://maps.google.com/maps?q={lat},{lon}&hl=en&z=14&output=embed"
         return html.Iframe(src=map_src, width="100%", height="300", style={"border": 0})
     except: return None
+
+def create_metadata_accordion(metadata):
+    """Takes a dictionary of metadata and converts it into a Dash Bootstrap Accordion."""
+    if "Error" in metadata:
+        return dbc.Alert(metadata["Error"], color="danger")
+    
+    accordion_items = []
+    for category, data in metadata.items():
+        table_body = [html.Tr([html.Td(key, className="fw-bold"), html.Td(html.Code(str(value)))]) for key, value in data.items()]
+        table = dbc.Table(
+            [html.Thead(html.Tr([html.Th("Tag"), html.Th("Value")])), html.Tbody(table_body)],
+            bordered=True,
+            hover=True,
+            striped=True,
+            responsive=True,
+            className="mt-2"
+        )
+        
+        item = dbc.AccordionItem(
+            children=table,
+            title=str(category)
+        )
+        accordion_items.append(item)
+        
+    return dbc.Accordion(accordion_items, start_collapsed=True, always_open=True, flush=True)
 
 # --- UI LAYOUT DEFINITIONS ---
 sidebar = html.Div([
@@ -198,15 +223,23 @@ def run_analysis_and_save(n_clicks, content, filename, case_id):
     if not record_id: return dbc.Alert("Error: Could not save to database.", color="danger")
     tx_hash = record_hash_on_blockchain(image_hash)
     if not tx_hash: return dbc.Alert("Warning: Saved to DB but failed to record on blockchain.", color="warning")
+    
     hash_card = dbc.Card([dbc.CardHeader("Cryptographic Hashes"), dbc.CardBody([html.P(["Image (SHA-256): ", html.Code(image_hash)]), html.P(["Blockchain TX: ", html.Code(tx_hash)])])])
     risk_card = dbc.Card([dbc.CardHeader("Risk Assessment"), dbc.CardBody(dbc.Alert(f"{risk_level}: {risk_reason}", color={"Low": "success", "Medium": "warning", "High": "danger"}[risk_level]))])
     map_card = dbc.Card([dbc.CardHeader("Geolocation"), dbc.CardBody(map_frame if map_frame else "No GPS data found.")])
-    metadata_card = dbc.Card([dbc.CardHeader("Full Extracted Metadata"), dbc.CardBody(html.Pre(json.dumps(metadata, indent=2, default=str), style={"maxHeight": "400px", "overflowY": "auto", "backgroundColor": "rgba(0,0,0,0.2)"}))])
+    
+    metadata_accordion = create_metadata_accordion(metadata)
+    metadata_card = dbc.Card([
+        dbc.CardHeader("Full Extracted Metadata"),
+        dbc.CardBody(metadata_accordion)
+    ], className="mt-3")
+    
     return html.Div([
         dbc.Alert("Success! Evidence processed and recorded.", color="success"),
         dbc.Row([dbc.Col(hash_card, md=6), dbc.Col(risk_card, md=6)], className="mb-3"),
-        dbc.Row([dbc.Col(map_card, md=12, className="mb-3")]),
-        dbc.Row([dbc.Col(metadata_card)])])
+        dbc.Row([dbc.Col(map_card, md=12)], className="mb-3"),
+        dbc.Row([dbc.Col(metadata_card)])
+    ])
 
 @app.callback(
     Output('verify-result-container', 'children'),
