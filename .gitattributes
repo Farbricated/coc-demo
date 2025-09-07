@@ -1,0 +1,55 @@
+# .gitattributes - Git file handling rules
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.py text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.sol text eol=lf
+
+# Configuration and data files
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.cfg text eol=lf
+
+# Shell scripts (if you add any)
+*.sh text eol=lf
+*.bat text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary
+
+# Exclude from exports (GitHub releases)
+.gitignore export-ignore
+.gitattributes export-ignore
+.env.example export-ignore
+__pycache__/ export-ignore
+*.pyc export-ignore
+.DS_Store export-ignore
+Thumbs.db export-ignore
+
+# IDE and editor files
+.idea/ export-ignore
+.vscode/ export-ignore
+*.swp export-ignore
+*.swo export-ignore
+*~ export-ignore
+
+# Environment files (extra protection)
+.env export-ignore
+assets/.env export-ignore
