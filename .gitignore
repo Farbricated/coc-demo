@@ -1,19 +1,32 @@
-# .gitignore
+# Add to existing .gitignore
 
-# Environment variables - CRITICAL
-# This will ignore the .env file inside the assets folder
-assets/.env
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
 
-# Python cache and compiled files
-__pycache__/
-*.pyc
+# Logs
+*.log
+logs/
 
-# Virtual environments (if you use one)
-venv/
-.venv/
-env/
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
 
-# IDE and OS-specific files
-.idea/
-.vscode/
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini

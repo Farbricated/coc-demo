@@ -1,18 +1,30 @@
-dash
-dash-bootstrap-components
-dash-table
+# Web App Framework
+Dash
+Dash-Bootstrap-Components
+Dash-Table
 
-# Database connector for MongoDB
-pymongo
+# Database
+pymongo[srv]
 
-# Blockchain interaction library for Ethereum
+# Blockchain
 web3
 
-# For loading environment variables from .env file
+# Environment
 python-dotenv
 
-# Image processing and forensic analysis tools
+# Image and PDF processing
 Pillow
 piexif
-pyzbar
+PyPDF2
+reportlab
+
+# AI and Multimedia Analysis
+tensorflow
+numpy
 stegano
+
+# Other
+qrcode
+python-magic-bin
+Flask-Login
+werkzeug
