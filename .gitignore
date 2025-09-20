@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual Environment
+coc_env/
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Application specific
+logs/
+uploads/
+reports/
+backups/
+keys/
+blockchain/
+blockchain_data/
+quantum/
+ai_models/
+case_files/
+evidence/
+evidence_vault/
+forensics/
+audit/
+
+# Environment variables in core directory
+core/.env
+core/.env.local
+core/.env.development
+core/.env.test
+core/.env.production
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Security
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Cleanup scripts
+cleanup_windows.bat
+updated_cleanup_windows.bat
