@@ -88,24 +88,29 @@ coc-demo/
 ├── 📄 .gitignore               # Git ignore patterns
 ├── 📄 README.md                # This documentation
 │
-├── 📁 modules/                  # Core application modules
-│   ├── 📄 __init__.py          # Module initialization
-│   ├── 📄 database.py          # Database management and models
-│   ├── 📄 blockchain.py        # Blockchain integration
-│   ├── 📄 ai_engine.py         # AI analysis engine
-│   ├── 📄 security.py          # Security and authentication
-│   ├── 📄 monitoring.py        # System monitoring
-│   ├── 📄 search_engine.py     # Search and filtering
-│   ├── 📄 api.py               # REST API endpoints
-│   ├── 📄 reports.py           # Report generation
-│   └── 📄 evidence_processor.py # Evidence processing
+├── 📁 core/                    # Core system components
+│   ├── 📄 __init__.py          # Core module initialization
+│   ├── 📄 .env                 # Environment variables (excluded from git)
+│   ├── 📄 blockchain.py        # Blockchain integration core
+│   └── 📄 database.py          # Database management core
 │
-├── 📁 logs/                    # Application logs (auto-created)
-├── 📁 uploads/                 # Evidence file uploads (auto-created)
-├── 📁 reports/                 # Generated reports (auto-created)
-├── 📁 backups/                 # Database backups (auto-created)
-├── 📁 keys/                    # Security keys and certificates (auto-created)
-└── 📁 static/                  # Static web assets (optional)
+├── 📁 modules/                  # Application modules
+│   ├── 📄 __init__.py          # Module initialization
+│   ├── 📄 ai_engine.py         # AI analysis engine
+│   ├── 📄 api.py               # REST API endpoints
+│   ├── 📄 evidence_processor.py # Evidence processing module
+│   ├── 📄 monitoring.py        # System monitoring
+│   ├── 📄 reports.py           # Report generation
+│   ├── 📄 search_engine.py     # Search and filtering
+│   └── 📄 security.py          # Security and authentication
+│
+├── 📁 data/                    # Application data storage
+├── 📁 evidence/                # Evidence file storage
+├── 📁 evidence_vault/          # Secure evidence vault
+├── 📁 forensics/               # Forensic analysis data
+├── 📁 keys/                    # Security keys and certificates
+├── 📁 logs/                    # Application logs
+└── 📁 static/                  # Static web assets (if needed)
 ```
 
 ## 🚀 Installation
