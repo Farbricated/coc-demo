@@ -66,3 +66,4 @@ Thumbs.db
 # Cleanup scripts
 cleanup_windows.bat
 updated_cleanup_windows.bat
+.env
