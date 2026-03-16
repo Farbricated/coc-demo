@@ -1,530 +1,296 @@
-# 🇮🇳 Chain of Custody Evidence Management System
+# 🇮🇳 COC v4.0 — Chain of Custody Evidence Management System
 
-> **Professional Digital Forensics Platform** - Government-Grade Evidence Management & Analysis
-
-## 📋 Table of Contents
-
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Project Structure](#project-structure)
-4. [Installation](#installation)
-5. [Configuration](#configuration)
-6. [Usage](#usage)
-7. [User Roles & Permissions](#user-roles--permissions)
-8. [Real-World Use Cases](#real-world-use-cases)
-9. [API Documentation](#api-documentation)
-10. [Security Features](#security-features)
-11. [Development](#development)
-12. [Troubleshooting](#troubleshooting)
-13. [Contributing](#contributing)
-14. [License](#license)
-
-## 🌟 Overview
-
-The **Chain of Custody Evidence Management System** is a comprehensive, production-ready digital forensics platform designed specifically for Indian law enforcement agencies. Built with modern web technologies and advanced security features, it provides a complete solution for managing, analyzing, and reporting on digital evidence in criminal investigations.
-
-### Key Highlights
-
-- **Government-Grade Security** with role-based access control
-- **AI-Powered Analysis** with 96.8% accuracy and 1000x processing speed
-- **Blockchain Evidence Integrity** ensuring tamper-proof evidence handling
-- **Court-Ready Reports** compliant with Indian IT Act 2000, Section 65B
-- **Multi-Agency Support** for coordinated investigations
-- **Real-World Implementation** based on actual investigation scenarios
-
-## ✨ Features
-
-### 🔐 Security & Authentication
-- **Multi-Level Authentication** with quantum-resistant encryption
-- **Role-Based Access Control** (RBAC) with security clearance levels
-- **Comprehensive Audit Logging** with blockchain verification
-- **Multi-Factor Authentication** support
-- **Session Management** with automatic timeout
-
-### 🤖 AI-Powered Analysis
-- **Multi-Modal Evidence Processing** (text, images, videos, audio)
-- **Pattern Recognition** with advanced machine learning
-- **Deepfake Detection** with 99.2% accuracy
-- **Automated Correlation** across multiple cases
-- **Predictive Crime Modeling** for investigation assistance
-
-### 📊 Evidence Management
-- **Digital Chain of Custody** with immutable audit trails
-- **Metadata Extraction** and preservation
-- **Hash Verification** for integrity checking
-- **Version Control** for evidence modifications
-- **Bulk Upload** capabilities
-
-### 📈 Case Management
-- **Interactive Case Dashboard** with real-time statistics
-- **Advanced Filtering & Search** by multiple criteria
-- **Case Timeline Visualization** 
-- **Team Assignment** and collaboration tools
-- **Progress Tracking** and milestone management
-
-### 📄 Reporting & Documentation
-- **Court-Admissible Reports** in multiple formats (PDF, HTML, Excel, Word)
-- **Legal Compliance** indicators and verification
-- **Automated Report Generation** with customizable templates
-- **Digital Signatures** and certificate management
-- **Export Capabilities** for external systems
-
-### 🔗 Integration & Interoperability
-- **REST API** for third-party integrations
-- **Database Flexibility** (MongoDB, SQLite support)
-- **Import/Export** capabilities
-- **International Cooperation** protocols
-- **Real-Time Monitoring** and alerts
-
-## 📁 Project Structure
-
-```
-coc-demo/
-├── 📄 app.py                    # Main application entry point
-├── 📄 config.py                 # Application configuration
-├── 📄 setup.py                  # Installation and setup script
-├── 📄 requirements.txt          # Python dependencies
-├── 📄 .env.example              # Environment variables template
-├── 📄 .gitignore               # Git ignore patterns
-├── 📄 README.md                # This documentation
-│
-├── 📁 core/                    # Core system components
-│   ├── 📄 __init__.py          # Core module initialization
-│   ├── 📄 .env                 # Environment variables (excluded from git)
-│   ├── 📄 blockchain.py        # Blockchain integration core
-│   └── 📄 database.py          # Database management core
-│
-├── 📁 modules/                  # Application modules
-│   ├── 📄 __init__.py          # Module initialization
-│   ├── 📄 ai_engine.py         # AI analysis engine
-│   ├── 📄 api.py               # REST API endpoints
-│   ├── 📄 evidence_processor.py # Evidence processing module
-│   ├── 📄 monitoring.py        # System monitoring
-│   ├── 📄 reports.py           # Report generation
-│   ├── 📄 search_engine.py     # Search and filtering
-│   └── 📄 security.py          # Security and authentication
-│
-├── 📁 data/                    # Application data storage
-├── 📁 evidence/                # Evidence file storage
-├── 📁 evidence_vault/          # Secure evidence vault
-├── 📁 forensics/               # Forensic analysis data
-├── 📁 keys/                    # Security keys and certificates
-├── 📁 logs/                    # Application logs
-└── 📁 static/                  # Static web assets (if needed)
-```
-
-## 🚀 Installation
-
-### Prerequisites
-
-- **Python 3.8+** (Recommended: Python 3.9 or 3.10)
-- **pip** (Python package installer)
-- **MongoDB** (Optional - system falls back to SQLite)
-- **Modern web browser** (Chrome, Firefox, Edge, Safari)
-- **Git** for version control
-
-### Step-by-Step Installation
-
-#### 1. Clone the Repository
-```bash
-git clone https://github.com/Farbricated/coc-demo.git
-cd coc-demo
-```
-
-#### 2. Create Virtual Environment
-```bash
-# Windows
-python -m venv coc_env
-coc_env\Scripts\activate
-
-# Linux/Mac
-python -m venv coc_env
-source coc_env/bin/activate
-```
-
-#### 3. Install Dependencies
-```bash
-# Install all required packages
-pip install -r requirements.txt
-
-# For development (with additional tools)
-pip install -r requirements.txt
-pip install pytest black flake8 mypy
-```
-
-#### 4. Environment Configuration
-```bash
-# Copy environment template
-cp .env.example .env
-
-# Edit .env file with your configuration
-# Use any text editor (notepad, nano, vim, vscode)
-notepad .env    # Windows
-nano .env       # Linux/Mac
-```
-
-#### 5. Run the Application
-```bash
-python app.py
-```
-
-#### 6. Access the System
-Open your web browser and navigate to: **http://127.0.0.1:8080**
-
-## ⚙️ Configuration
-
-### Environment Variables (.env file)
-
-```env
-# Security Configuration
-SECRET_KEY=your-super-secure-secret-key-here
-JWT_SECRET=your-jwt-secret-key-here
-QUANTUM_KEY=your-quantum-security-key-here
-
-# Security Features
-QUANTUM_SECURITY=false          # Enable post-quantum cryptography
-BLOCKCHAIN_EVIDENCE=true        # Enable blockchain evidence integrity
-MFA_ENABLED=true               # Enable multi-factor authentication
-DEEPFAKE_DETECTION=true        # Enable deepfake detection
-
-# Database Configuration
-MONGODB_URI=mongodb://localhost:27017/
-MONGODB_DB=coc_evidence
-MAX_FILE_SIZE=2147483648       # 2GB maximum file size
-
-# Server Configuration
-DEBUG=false                    # Set to true for development
-HOST=127.0.0.1                # Server host
-PORT=8080                     # Server port
-ENVIRONMENT=production         # deployment environment
-
-# AI and Analysis
-AI_MODEL_PATH=./ai_models/
-SESSION_TIMEOUT=3600          # Session timeout in seconds
-
-# International Features
-INTERNATIONAL_COOPERATION=true
-METAVERSE_ENABLED=false       # Future feature
-```
-
-## 🎯 Usage
-
-### Initial Login
-
-The system comes with pre-configured demo accounts for different user roles:
-
-| Username | Password | Role | Access Level |
-|----------|----------|------|--------------|
-| `admin` | `admin123` | 👑 National Cyber Security Coordinator | TOP SECRET (L10) |
-| `analyst` | `analyst123` | 🔬 Principal Cyber Forensic Scientist | SECRET (L8) |
-| `investigator` | `invest123` | 🕵️ Deputy Superintendent Police Cyber | SECRET (L7) |
-| `officer` | `officer123` | 👮 Cyber Crime Response Officer | CONFIDENTIAL (L5) |
-| `forensic` | `forensic123` | 🎓 Director Digital Forensics | SECRET (L9) |
-| `legal` | `legal123` | ⚖️ Joint Secretary Legal Cyber Laws | SECRET (L8) |
-
-### Main Features Walkthrough
-
-#### 1. Dashboard Overview
-- **System Statistics**: Total cases, evidence, success rates
-- **Active Investigations**: Current high-priority cases
-- **Performance Metrics**: AI analysis accuracy, processing speeds
-- **Alerts & Notifications**: System status and urgent items
-
-#### 2. Evidence Upload & Management
-```
-1. Navigate to "Evidence Upload" tab
-2. Select investigation case from dropdown
-3. Set priority level (CRITICAL, HIGH, MEDIUM, LOW)
-4. Choose security classification
-5. Drag and drop evidence files
-6. Add description and metadata
-7. Click "Upload & Analyze"
-```
-
-#### 3. AI Analysis Center
-```
-1. Go to "AI Analysis" tab
-2. Upload evidence files for analysis
-3. Select analysis types:
-   - Pattern Recognition
-   - Deepfake Detection
-   - Device Forensics
-   - Network Analysis
-   - Cross-Case Correlation
-4. Set confidence threshold
-5. Start analysis and review results
-```
-
-#### 4. Case Management
-```
-1. Access "Case Management" tab
-2. View all cases with filtering options
-3. Create new cases with the + button
-4. Click on any case to view details
-5. Assign team members and update status
-6. Track progress and milestones
-```
-
-#### 5. Report Generation
-```
-1. Navigate to "Reports" tab
-2. Select report type and case
-3. Choose output format (PDF, HTML, Excel, Word)
-4. Select report sections to include
-5. Generate court-ready reports
-6. Download and distribute
-```
-
-## 👥 User Roles & Permissions
-
-### Security Clearance Levels
-
-| Level | Classification | Access Rights |
-|-------|---------------|---------------|
-| L10 | TOP SECRET | Full system access, national coordination |
-| L9 | SECRET | Expert analysis, research, court testimony |
-| L8 | SECRET | Advanced forensics, policy development |
-| L7 | SECRET | Multi-agency coordination, case management |
-| L5 | CONFIDENTIAL | Field operations, evidence collection |
-
-## 🌍 Real-World Use Cases
-
-The system is designed based on actual investigation scenarios:
-
-### Case Study 1: State-Sponsored APT Attack
-**Scenario**: Investigation of cyber attack on Maharashtra power infrastructure
-- **Agencies**: NSG Cyber Wing, NCIIPC, CERT-In
-- **Evidence Types**: Network traffic, malware samples, system logs
-- **Economic Impact**: ₹500+ Crores
-- **Timeline**: 72-hour critical response period
-- **Outcome**: Attribution to state actors, diplomatic action
-
-### Case Study 2: Multi-State UPI Fraud Network
-**Scenario**: Large-scale UPI fraud targeting 15,000+ victims
-- **Agencies**: CBI Banking Division, ED Cyber Cell, FIU-IND
-- **Evidence Types**: Transaction logs, mobile forensics, cryptocurrency analysis
-- **Financial Loss**: ₹247 Crores
-- **Geographic Spread**: 23 states
-- **Outcome**: Major fraud network dismantled
-
-### Case Study 3: Digital Murder Investigation
-**Scenario**: Mobile forensics in high-profile murder case
-- **Agencies**: Delhi Police Crime Branch, CFSL Delhi
-- **Evidence Types**: WhatsApp chats, location data, call records
-- **Digital Evidence Weight**: 89% of total evidence
-- **Devices Analyzed**: 4 mobile devices
-- **Outcome**: Life imprisonment based on digital evidence
-
-## 🔌 API Documentation
-
-### Base URL
-```
-http://localhost:8080/api
-```
-
-### Authentication
-All API requests require authentication headers:
-```http
-Authorization: Bearer <jwt_token>
-X-API-Key: <api_key>
-```
-
-### Core Endpoints
-
-#### System Health
-```http
-GET /api/health
-```
-**Response:**
-```json
-{
-  "status": "operational",
-  "timestamp": "2025-09-20T05:30:00Z",
-  "version": "3.0.0-enterprise",
-  "features": {
-    "quantum_security": true,
-    "blockchain_enabled": true,
-    "ai_engine": "operational",
-    "deepfake_detection": true
-  }
-}
-```
-
-#### System Statistics
-```http
-GET /api/stats
-```
-**Response:**
-```json
-{
-  "total_evidence": 1247,
-  "total_cases": 89,
-  "total_users": 156,
-  "processing_speed_factor": 1000,
-  "last_updated": "2025-09-20T05:30:00Z"
-}
-```
-
-## 🔒 Security Features
-
-### Encryption & Data Protection
-- **AES-256 Encryption** for data at rest
-- **TLS 1.3** for data in transit
-- **Post-Quantum Cryptography** (optional)
-- **Hash-based Integrity** checking
-- **Digital Signatures** for authentication
-
-### Access Control
-- **Role-Based Permissions** with inheritance
-- **Security Clearance Levels** (L1-L10)
-- **Multi-Factor Authentication** support
-- **Session Management** with timeout
-- **IP-based Restrictions** (configurable)
-
-### Audit & Compliance
-- **Comprehensive Audit Logs** with blockchain verification
-- **Real-time Monitoring** of all activities
-- **Compliance Reporting** (IT Act 2000, BSA 2023)
-- **Chain of Custody** maintenance
-- **Evidence Integrity** verification
-
-## 🛠️ Development
-
-### Development Environment Setup
-
-1. **Clone for Development**
-```bash
-git clone https://github.com/Farbricated/coc-demo.git
-cd coc-demo
-```
-
-2. **Install Development Dependencies**
-```bash
-pip install -r requirements.txt
-pip install pytest black flake8 mypy pre-commit
-```
-
-3. **Run in Debug Mode**
-```bash
-export DEBUG=true  # Linux/Mac
-set DEBUG=true     # Windows
-python app.py
-```
-
-### Testing
-
-```bash
-# Run all tests
-pytest
-
-# Run with coverage
-pytest --cov=modules
-
-# Run specific test categories
-pytest tests/unit/
-pytest tests/integration/
-pytest tests/security/
-```
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-#### Issue 1: MongoDB Connection Failed
-**Symptoms**: Application starts with "MongoDB connection failed" message
-**Solutions**:
-1. Ensure MongoDB is installed and running
-2. Check `MONGODB_URI` in `.env` file
-3. Verify MongoDB service status
-4. System will automatically fall back to SQLite
-
-#### Issue 2: File Upload Errors
-**Symptoms**: Large files fail to upload
-**Solutions**:
-1. Check `MAX_FILE_SIZE` setting in `.env`
-2. Verify disk space availability
-3. Ensure `uploads/` directory exists and is writable
-4. Check file format compatibility
-
-#### Issue 3: Authentication Issues
-**Symptoms**: Login fails or sessions expire quickly
-**Solutions**:
-1. Verify credentials with demo accounts
-2. Check `SESSION_TIMEOUT` in configuration
-3. Clear browser cache and cookies
-4. Ensure system time is correct
-
-## 🤝 Contributing
-
-### Development Workflow
-
-1. **Fork the Repository**
-2. **Create Feature Branch**
-```bash
-git checkout -b feature/new-analysis-tool
-```
-
-3. **Make Changes**
-   - Follow coding standards
-   - Add comprehensive tests
-   - Update documentation
-
-4. **Test Changes**
-```bash
-pytest
-black .
-flake8 .
-```
-
-5. **Submit Pull Request**
-   - Clear description of changes
-   - Reference any related issues
-   - Include test coverage report
-
-## 📄 License
-
-This project is licensed under the **MIT License** with additional terms for government use.
-
-### Terms of Use
-
-- **Government Agencies**: Authorized for official law enforcement use
-- **Educational Institutions**: Permitted for research and training
-- **Commercial Use**: Requires separate licensing agreement
-- **Distribution**: Must retain attribution and license notices
-
-***
-
-## 📞 Support & Contact
-
-### Technical Support
-- **Documentation**: This README and inline code comments
-- **Issues**: GitHub Issues tracker
-- **Discussions**: GitHub Discussions
-
-### For Government Agencies
-- **Training Programs**: Available for officer education
-- **Custom Deployment**: Professional installation and configuration
-- **24/7 Support**: Critical investigation support
-- **Compliance Consulting**: Legal and regulatory guidance
-
-***
-
-**🇮🇳 Developed for Indian Law Enforcement**  
-*Professional Digital Forensics -  Evidence Integrity -  Justice Through Technology*
+> **IEEE-Grade Digital Forensics Platform** for Indian Law Enforcement  
+> Single-file · SQLite · Groq AI · Batch Merkle Blockchain · Section 65B · DPDP Act 2023
 
 ---
 
-## 📊 Project Statistics
+## Quick Start
 
-- **Lines of Code**: 15,000+
-- **Supported File Types**: 50+
-- **Test Coverage**: 85%+
-- **Security Audit**: Passed
-- **Performance**: 1000x human analysis speed
-- **Accuracy**: 96.8% AI model accuracy
-- **Users**: Deployed in 15+ agencies
-- **Cases Processed**: 2,800+
-- **Evidence Secured**: ₹500+ Crores in fraud cases
+```bash
+# 1. Install dependencies
+pip install dash dash-bootstrap-components plotly flask flask-cors \
+    PyJWT pyotp qrcode werkzeug requests reportlab Pillow python-dotenv
 
-*Last Updated: September 20, 2025*
+# 2. Create .env file
+echo "GROQ_API_KEY=your_key_here" > .env
+echo "SECRET_KEY=your_secret_here" >> .env
 
+# 3. Run
+python app.py
+
+# 4. Open browser
+http://127.0.0.1:8080
+```
+
+---
+
+## Login Credentials
+
+| Username | Password | Role | Clearance |
+|---|---|---|---|
+| `admin` | `admin123` | National Coordinator | TOP SECRET · L5 |
+| `analyst` | `analyst123` | Forensic Scientist | SECRET · L4 |
+| `forensic` | `forensic123` | Digital Forensics Director | SECRET · L4 |
+| `investigator` | `invest123` | CBI Investigator | SECRET · L3 |
+| `legal` | `legal123` | Legal Advisor | SECRET · L3 |
+| `officer` | `officer123` | Field Officer | CONFIDENTIAL · L2 |
+
+---
+
+## Architecture
+
+**Single file** (`app.py`) — 1,412 lines, zero microservices, zero Docker required.
+
+```
+app.py
+├── DATABASE        SQLite WAL · 12 tables · 17 indexes · thread-local pool
+├── AUTH            JWT tokens · TOTP MFA · role-based permissions · account lockout
+├── BLOCKCHAIN      Batch Merkle SHA-256 hash chain · O(log n) verification
+├── FORENSIC ENGINE Local analysis + Groq AI · LRU cache · STRIDE model
+├── PDF REPORTS     Section 65B + DPDP Act 2023 · court-admissible
+└── DASH UI         9 tabs · role-specific dashboards · live stats bar
+```
+
+### Database Tables (12)
+
+| Table | Purpose |
+|---|---|
+| `users` | Officers, roles, clearance levels, MFA secrets |
+| `cases` | Investigation cases with FIR numbers and agency |
+| `evidence` | All uploaded files with full forensic metadata |
+| `coc_transfers` | Chain of custody handover log with SHA-256 proof |
+| `ioc_indicators` | Extracted IOCs — URLs, IPs, emails, signatures |
+| `case_correlations` | Auto-detected cross-case links and duplicates |
+| `alerts` | Persistent system alerts — HIGH risk, duplicates |
+| `perf_metrics` | P50/P95/P99 benchmark data for IEEE paper |
+| `audit_logs` | Every user action, timestamped |
+| `blockchain_records` | Merkle hash chain blocks |
+| `groq_cache` | LRU cache for Groq API responses by file hash |
+| `ev_comparisons` | Evidence comparison session history |
+
+### Database Indexes (17)
+
+All foreign keys and common query columns are indexed:
+`evidence(case_id, sha256_hash, risk_level, file_type, uploaded_at)` · `ioc_indicators(case_id, ioc_type, ioc_value)` · `alerts(read_by)` · `audit_logs(username, timestamp)` · `blockchain_records(block_index)` · `coc_transfers(evidence_id)` · `perf_metrics(operation)`
+
+---
+
+## User Interface — 9 Tabs
+
+### Home
+Role-specific landing page. Admin sees system health. Analyst sees forensic queue (HIGH/CRITICAL items needing review). Investigator sees active cases with evidence counts. Officer gets upload shortcut. Always-visible stats bar across top shows live evidence count, case count, chain status, Groq status.
+
+### Evidence
+Full evidence browser with search + filter. Left panel: paginated list (25/page) with search by filename/hash/description, filter by case/risk/type, CSV export. Right panel: detail view with 6 sub-tabs — Overview (all hashes + AI summary), Hex Dump (first 256 bytes), Strings (extracted printable strings), STRIDE (6-category threat model), IOCs (extracted indicators with VirusTotal links), Chain (block info + transfer history). Select two items with checkboxes to compare side by side.
+
+### Upload
+Drag and drop any file type up to 500MB. Select case, priority, classification, seizure location, tags, description. On upload: SHA-256 + MD5 + SHA-1, magic byte detection, entropy, 27-pattern signature scan, string extraction, URL/IP/email extraction, hex dump, STRIDE assessment, Groq AI analysis, batch Merkle anchor, cross-case dedup check, IOC storage, alert creation if HIGH/CRITICAL. Multiple files anchor in ONE Merkle block.
+
+### Cases
+All cases your clearance permits. Each card shows case number, FIR, agency, status, evidence count, IOC count, and a **Health Score (0–100)** progress bar. Status dropdown updates live. Evidence timeline at bottom shows all evidence across all cases in chronological order.
+
+### Intelligence
+IOC management table with VirusTotal links on every row. Record evidence transfers between officers — generates SHA-256 proof hash. Case correlation panel shows auto-detected links. IOC type distribution chart.
+
+### Chain
+Batch Merkle blockchain explorer. Shows each block with hash, previous hash, Merkle root, files anchored, uploader, timestamp. Chain integrity verification on load. Mathematical formula displayed. Explains O(log n) batch verification for IEEE methodology section.
+
+### Reports
+Generate court-ready PDFs. Includes: evidence inventory with all hashes, batch Merkle proof, AI forensic assessments, STRIDE summary, Section 65B certificate, DPDP Act 2023 compliance statement, case health score, ISO/IEC 27037:2012 methodology note. Downloaded immediately.
+
+### Benchmarks
+Live P50/P95/P99 latency for evidence analysis, blockchain anchor, Groq AI. Latency scatter plot. Pre-formatted IEEE Table I ready to copy into paper. Groq token count.
+
+### Admin
+User management — enable/disable accounts. System health cards. Full audit log. Database stats.
+
+---
+
+## Analysis Pipeline (per file upload)
+
+```
+File received
+    ↓ SHA-256 + MD5 + SHA-1
+    ↓ Magic byte detection (24 types) + extension fallback
+    ↓ Shannon entropy (8KB sample)
+    ↓ 27-pattern signature scan (CRITICAL/HIGH/MEDIUM/LOW)
+    ↓ String extraction (top 30 printable strings ≥6 chars)
+    ↓ URL / IP / email extraction (regex)
+    ↓ Hex dump (first 256 bytes, formatted)
+    ↓ Local risk score (0.0–1.0)
+    ↓ STRIDE assessment (6 categories from local signals)
+    ↓ IOC extraction (URLs, IPs, emails, high-severity signatures)
+    ↓ Groq cache check (by SHA-256 hash)
+    ↓   → Cache hit: skip API call entirely
+    ↓   → Cache miss: call Groq llama-3.3-70b-versatile
+    ↓   → Groq unavailable: local fallback analysis
+    ↓ Merge Groq IOCs with local IOCs
+    ↓ Batch Merkle anchor (all files in upload → one block)
+    ↓ Cross-case dedup check (same SHA-256 in other cases?)
+    ↓   → Duplicate found: create alert + case correlation
+    ↓ Persistent alert if HIGH or CRITICAL risk
+    ↓ Save to evidence table
+    ↓ Save IOCs to ioc_indicators table
+    ↓ Audit log entry
+    ↓ Invalidate stats cache
+```
+
+---
+
+## Blockchain — Batch Merkle Design
+
+All files dropped in a single upload are anchored in **one block** using a Merkle tree over all N file hashes.
+
+```
+Block Hash = SHA256(index ‖ prev_hash ‖ sorted(evidence_ids) ‖ timestamp ‖ uploader ‖ MerkleRoot)
+
+MerkleRoot = reduce(SHA256(left ‖ right), [sha256(file_1), sha256(file_2), ..., sha256(file_N)])
+```
+
+This is **O(log N) batch verification** — a single block proves N files simultaneously. Single-file chaining would require N blocks and O(N) verification.
+
+---
+
+## STRIDE Threat Model
+
+Every evidence item gets a 6-category STRIDE assessment based on local signals:
+
+| Category | Signal Used |
+|---|---|
+| **Spoofing** | Credential harvesting signatures (mimikatz, keylog, password) |
+| **Tampering** | Process injection APIs (WriteProcessMemory, CreateRemoteThread) |
+| **Repudiation** | Script execution that may clear audit logs |
+| **Info Disclosure** | Network indicators — extracted IPs and URLs |
+| **DoS** | Resource-intensive execution patterns |
+| **Elevation** | Privilege escalation APIs |
+
+---
+
+## Case Health Score
+
+Every case gets a score 0–100 based on:
+
+| Component | Max Points |
+|---|---|
+| Evidence quantity (log scale) | 20 |
+| % evidence blockchain anchored | 20 |
+| % evidence AI analyzed | 20 |
+| IOC count extracted | 20 |
+| Metadata completeness (FIR, agency, description, status) | 20 |
+
+Shown as a colored progress bar on each case card and included in generated reports.
+
+---
+
+## REST API
+
+| Endpoint | Returns |
+|---|---|
+| `GET /api/health` | System status, version, block count |
+| `GET /api/stats` | Live counts for all tables |
+| `GET /api/benchmarks` | P50/P95/P99 per operation |
+| `GET /api/chain/verify` | Full chain integrity check |
+| `GET /api/search/<query>` | Search evidence + cases + IOCs |
+| `GET /api/evidence/export` | CSV of all evidence |
+| `GET /download/<filename>` | Download generated PDF report |
+
+---
+
+## Configuration (.env)
+
+```env
+GROQ_API_KEY=gsk_your_key_here          # Get free at console.groq.com
+SECRET_KEY=your-random-64-char-string   # JWT signing key
+HOST=127.0.0.1                          # Server host
+PORT=8080                               # Server port
+DEBUG=true                              # Set false for production
+TOKEN_EXPIRY_HOURS=8                    # JWT expiry
+```
+
+Without `GROQ_API_KEY`, all features still work — analysis falls back to local forensic engine (entropy + signatures + STRIDE). Groq responses are cached in SQLite by file hash so the same file never calls the API twice.
+
+---
+
+## IEEE Publication — Novel Contributions
+
+1. **First framework combining blockchain + AI for Indian legal compliance** — Section 65B + DPDP Act 2023 + ISO/IEC 27037:2012 in one system
+
+2. **Batch Merkle blockchain anchoring** — N evidence files anchored in O(log N) vs O(N) for naive per-file chaining. Provably tamper-evident without external PKI
+
+3. **STRIDE integrated into forensic pipeline** — automated per-file threat modelling at upload time, stored in DB, included in court reports
+
+4. **Role hierarchy mapped to Indian government clearance** — MHA/CVC 5-level classification enforced at DB query level (SQL WHERE clause), not just UI
+
+5. **Live P50/P95/P99 benchmarks** — every operation timed and stored, IEEE Table I auto-generated from real measurements
+
+6. **LLM cross-case IOC correlation** — Groq extracts IOCs per file, stored in normalized table, auto-correlates across cases on duplicate hash detection
+
+---
+
+## Legal Compliance
+
+| Standard | Implementation |
+|---|---|
+| Section 65B, Indian Evidence Act 1872 | Certificate page in every PDF report |
+| Information Technology Act 2000 | Referenced in certificate, tampering offence noted |
+| DPDP Act 2023 | Data minimisation statement, purpose limitation |
+| ISO/IEC 27037:2012 | Methodology reference in reports and certificate |
+| BNS 2023 (Bharatiya Nyaya Sanhita) | Section 77 referenced in certificate |
+| CERT-In Guidelines | Chain of custody integrity requirements met |
+
+---
+
+## What's Not Yet Built
+
+- Email/SMS notifications on critical evidence upload
+- YARA custom rule upload and scanning
+- Disk image mounting (.dd / .E01 / .vmdk)
+- VirusTotal API hash submission (links open VT in browser; no auto-submission)
+- Digital signature on PDF reports (officer certificate)
+- Data retention auto-enforcement (DPDP Act schedule)
+- CCTNS export format
+- User study questionnaire (required for IEEE Transactions)
+- Comparative analysis vs Autopsy / FTK / EnCase (required for IEEE)
+- Password reset flow
+- Mobile-optimized layout
+
+---
+
+## Project Structure
+
+```
+coc-demo/
+├── app.py              # Entire system — 1,412 lines, single file
+├── .env                # Your keys (never commit this)
+├── .env.example        # Template
+├── requirements.txt    # Dependencies
+├── README.md           # This file
+├── data/
+│   └── coc_v4.db       # SQLite database (auto-created)
+├── reports/            # Generated PDF reports
+├── logs/
+│   └── coc.log         # Application log
+└── exports/            # CSV exports
+```
+
+---
+
+## Dependencies
+
+```
+dash                    Web framework
+dash-bootstrap-components  UI components
+plotly                  Charts
+flask / flask-cors      HTTP server
+PyJWT                   JWT authentication
+pyotp / qrcode          TOTP MFA
+werkzeug                Password hashing, file utils
+requests                Groq API calls
+reportlab / Pillow      PDF generation
+python-dotenv           .env loading
+```
+
+---
+
+*COC v4.0 — Built for Indian Law Enforcement · IEEE-Grade · Section 65B Compliant*
